@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+function bootstrap {
+  local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  app compile dmg \
+    'http://download.virtualbox.org/virtualbox/5.0.8/VirtualBox-5.0.8-103449-OSX.dmg' \
+    'VirtualBox' 'VirtualBox.pkg'
+}
+
+bootstrap
