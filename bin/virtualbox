@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-export PROVIDER="virtualbox"
+export VAGRANT_DEFAULT_PROVIDER="virtualbox"
 
 source sub "$0" "$@"
