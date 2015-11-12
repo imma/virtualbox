@@ -2,4 +2,4 @@
 
 export VAGRANT_DEFAULT_PROVIDER="virtualbox"
 
-source sub "$0" "$@"
+exec parity "$@"
