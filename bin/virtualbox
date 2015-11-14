@@ -2,4 +2,8 @@
 
 export VAGRANT_DEFAULT_PROVIDER="virtualbox"
 
-exec parity "$@"
+function main {
+  exec parity "$@"
+}
+
+source sub "$BASH_SOURCE" "$@"
