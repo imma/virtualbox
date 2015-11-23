@@ -4,9 +4,19 @@ function bootstrap {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
   source "$shome/script/profile"
 
-  app compile dmg \
-    'http://download.virtualbox.org/virtualbox/5.0.8/VirtualBox-5.0.8-103449-OSX.dmg' \
-    'VirtualBox' 'VirtualBox.pkg'
+  case "$(uname -s)" in
+    Darwin)
+      app compile dmg \
+        'http://download.virtualbox.org/virtualbox/5.0.10/VirtualBox-5.0.10-104061-OSX.dmg' \
+        'VirtualBox' 'VirtualBox.pkg'
+      ;;
+    Linux)
+      echo 'deb http://download.virtualbox.org/virtualbox/debian trusty contrib' | sudo tee /etc/apt/sources.list.d/virtualbox.list
+      curl 'https://www.virtualbox.org/download/oracle_vbox.asc' | sudo apt-key add -
+      sudo aptitude update
+      sudo aptitude install -y dkms virtualbox-5.0
+      ;;
+  esac
 }
 
 bootstrap
