@@ -3,6 +3,14 @@
 export VAGRANT_DEFAULT_PROVIDER="virtualbox"
 
 function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+
+  case "${1:-}" in
+    remove|add)
+      cd "$shome"
+      ;;
+  esac
+
   exec parity "$@"
 }
 
