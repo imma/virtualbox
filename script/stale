@@ -6,7 +6,7 @@ function main {
 
   case "$(uname -s)" in
     Linux)
-      return 0
+      return 1
       ;;
   esac
 
