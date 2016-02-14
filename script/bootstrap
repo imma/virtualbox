@@ -11,7 +11,7 @@ function bootstrap {
         'VirtualBox' 'VirtualBox.pkg'
       ;;
     Linux)
-      curl -sS -L -o 'https://www.virtualbox.org/download/oracle_vbox.asc' | sudo apt-key add -
+      curl -sS -L 'https://www.virtualbox.org/download/oracle_vbox.asc' | sudo apt-key add -
       echo 'deb http://download.virtualbox.org/virtualbox/debian trusty contrib' | sudo tee /etc/apt/sources.list.d/virtualbox.list
       sudo aptitude update
       sudo aptitude install -y dkms virtualbox-5.0
