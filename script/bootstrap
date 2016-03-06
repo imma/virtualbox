@@ -7,7 +7,7 @@ function bootstrap {
   case "$(uname -s)" in
     Darwin)
       block compile dmg \
-        'http://download.virtualbox.org/virtualbox/5.0.14/VirtualBox-5.0.14-105127-OSX.dmg' \
+        'http://download.virtualbox.org/virtualbox/5.0.16/VirtualBox-5.0.16-105871-OSX.dmg' \
         'VirtualBox' 'VirtualBox.pkg'
       ;;
     Linux)
