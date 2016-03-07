@@ -9,7 +9,7 @@ function bootstrap {
       block compile dmg \
         'http://download.virtualbox.org/virtualbox/5.0.16/VirtualBox-5.0.16-105871-OSX.dmg' \
         'VirtualBox' 'VirtualBox.pkg'
-      cache curl 'http://download.virtualbox.org/virtualbox/5.0.16/Oracle_VM_VirtualBox_Extension_Pack-5.0.16-105871.vbox-extpack'
+      cache curl 'Oracle_VM_VirtualBox_Extension_Pack-5.0.16-105871.vbox-extpack' 'http://download.virtualbox.org/virtualbox/5.0.16/Oracle_VM_VirtualBox_Extension_Pack-5.0.16-105871.vbox-extpack'
       ;;
     Linux)
       curl -sS -L 'https://www.virtualbox.org/download/oracle_vbox.asc' | sudo apt-key add -
