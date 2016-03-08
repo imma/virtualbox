@@ -1,6 +1,7 @@
 {
   "require": [
     "context",
-    "parity"
+    "parity",
+    "curl"
   ]
 }
