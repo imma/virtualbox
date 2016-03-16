@@ -2,6 +2,7 @@
   "require": [
     "context",
     "parity",
-    "curl"
+    "curl",
+    "facts"
   ]
 }

@@ -6,7 +6,9 @@ function main {
 
   case "$(uname -s)" in
     Linux)
-      return 1
+      if facts -e '(.virtualization_role == "guest")' >/dev/null; then
+        return 1
+      fi
       ;;
   esac
 
