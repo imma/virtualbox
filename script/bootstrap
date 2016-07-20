@@ -7,14 +7,14 @@ function bootstrap {
   case "$(uname -s)" in
     Darwin)
       block compile dmg \
-        'http://download.virtualbox.org/virtualbox/5.1.0/VirtualBox-5.1.0-108711-OSX.dmg' \
+        'http://download.virtualbox.org/virtualbox/5.0.26/VirtualBox-5.0.26-108824-OSX.dmg' \
         'VirtualBox' 'VirtualBox.pkg'
       ;;
     Linux)
       sudo apt-key add "$shome/etc/virtualbox.gpg"
       echo 'deb http://download.virtualbox.org/virtualbox/debian trusty contrib' | sudo tee /etc/apt/sources.list.d/virtualbox.list
       sudo aptitude update
-      sudo aptitude install -y dkms virtualbox-5.1
+      sudo aptitude install -y dkms virtualbox-5.0
       ;;
   esac
 }
