@@ -7,16 +7,16 @@ function main {
   case "$(uname -s)" in
     Linux)
       if facts -e '(.virtualization_role == "guest")' >/dev/null; then
-        return 1
+        return 0
       fi
       ;;
   esac
 
-  if [[ -x "$(type -P VBoxManage)" ]]; then
+  if [[ "$($shome/script/version | jq -r '.virtualbox')" != "$VIRTUALBOX_VERSION" ]]; then
     return 1
-  else
-    return 0
   fi
+
+  return 0
 }
 
-source sub "$0" "$@"
+source sub "$BASH_SOURCE" "$@"

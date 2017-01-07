@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+function version {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  local ver_virtualbox="$(VBoxManage --version 2>/dev/null | cut -dr -f1 || true)"
+  jq -n --arg virtualbox "$ver_virtualbox" '{virtualbox: $virtualbox}'
+}
+
+version "$@"

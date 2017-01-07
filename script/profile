@@ -3,6 +3,8 @@
 function _virtualbox_profile {
   local shome="${_virtualbox_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$shome/exec:$PATH"
+
+  VIRTUALBOX_VERSION='5.1.12'
 }
 
 _virtualbox_profile
