@@ -13,7 +13,7 @@ function bootstrap {
     Linux)
       sudo apt-key add "$shome/etc/virtualbox.gpg"
       source /etc/lsb-release
-      echo 'deb http://download.virtualbox.org/virtualbox/debian ${DISTRIB_CODENAME} contrib' | sudo tee /etc/apt/sources.list.d/virtualbox.list
+      echo "deb http://download.virtualbox.org/virtualbox/debian ${DISTRIB_CODENAME} contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
       sudo -E aptitude update
       sudo -E aptitude install -y dkms virtualbox-5.1
       ;;
