@@ -12,6 +12,7 @@ function bootstrap {
       ;;
     Linux)
       sudo apt-key add "$shome/etc/virtualbox.gpg"
+      sudo apt-key add "$shome/etc/virtualbox_2016.gpg"
       source /etc/lsb-release
       echo "deb http://download.virtualbox.org/virtualbox/debian ${DISTRIB_CODENAME} contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
       sudo -E aptitude update
