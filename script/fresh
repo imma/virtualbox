@@ -4,19 +4,15 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  case "$(uname -s)" in
-    Linux)
-      if facts -e '(.virtualization_role == "guest")' >/dev/null; then
-        return 0
-      fi
-      ;;
-  esac
-
-  if [[ "$($shome/script/version | jq -r '.virtualbox')" != "$VIRTUALBOX_VERSION" ]]; then
-    return 1
+  if [[ "$($shome/script/version | jq -r '.virtualbox')" == "$VIRTUALBOX_VERSION" ]]; then
+    return 0
   fi
 
-  return 0
+  if facts -e '(.virtualization_role == "guest")' >/dev/null; then
+    return 0
+  fi
+
+  return 1
 }
 
 source sub "$BASH_SOURCE" "$@"
