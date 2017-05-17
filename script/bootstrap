@@ -22,8 +22,8 @@ function bootstrap {
       sudo apt-key add "$shome/etc/virtualbox_2016.gpg"
       source /etc/lsb-release
       echo "deb http://download.virtualbox.org/virtualbox/debian ${DISTRIB_CODENAME} contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
-      sudo -E aptitude update
-      sudo -E aptitude install -y dkms virtualbox-5.1
+      sudo -E apt-get update
+      sudo -E apt-get install -y dkms virtualbox-5.1
       ;;
   esac
 }
