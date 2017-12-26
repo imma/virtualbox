@@ -4,18 +4,14 @@ function bootstrap {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  local force=
-  case "${1:-}" in
-    force)
-      shift
-      force='--force '
-      ;;
-  esac
-
   case "$(uname -s)" in
     Darwin)
-      brew cask install ${force}virtualbox
-      brew cask install ${force}virtualbox-extension-pack
+      if [[ "$#" == 0 ]]; then
+        set -- install
+      fi
+      brew update
+      brew cask "$@" virtualbox
+      brew cask "$@" virtualbox-extension-pack
       ;;
     Linux)
       sudo apt-key add "$shome/etc/virtualbox.gpg"
@@ -23,9 +19,9 @@ function bootstrap {
       source /etc/lsb-release
       echo "deb http://download.virtualbox.org/virtualbox/debian ${DISTRIB_CODENAME} contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
       sudo -E apt-get update
-      sudo -E apt-get install -y dkms virtualbox-5.1
+      sudo -E apt-get install -y dkms "virtualbox-$(echo "${VIRTUALBOX_VERSION}" | cut -d . -f1-2)"
       ;;
   esac
 }
 
-bootstrap
+bootstrap "$@"
